@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação do WiFi Scanner e Brute Force Tool</title>
+    <style>
+        /* Estilos Básicos */
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #64b5f6;
+            --text-color: #e0e0e0;
+            --bg-color: #121212;
+            --container-bg: #1a1a1a;
+            --border-color: #333;
+            --code-bg: #1e1e1e;
+            --alert-warning-bg: #2c2700;
+            --alert-danger-bg: #2c1212;
+            --alert-info-bg: #002c40;
+            --alert-success-bg: #002c14;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--container-bg);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        /* Navegação */
+        nav.toc {
+            background-color: rgba(13, 71, 161, 0.1);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        nav.toc h2 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        nav.toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        nav.toc li {
+            margin-bottom: 8px;
+        }
+        
+        nav.toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        
+        nav.toc a:hover {
+            background-color: rgba(100, 181, 246, 0.1);
+            text-decoration: underline;
+        }
+        
+        /* Tipografia */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--secondary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        h2 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 1.2em;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Código */
+        pre, code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+            background-color: var(--code-bg);
+            border-radius: 3px;
+        }
+        
+        code {
+            padding: 2px 5px;
+            color: #f06292;
+        }
+        
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            line-height: 1.4;
+        }
+        
+        pre code {
+            padding: 0;
+            background-color: transparent;
+            color: #e0e0e0;
+        }
+        
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+        
+        th {
+            background-color: rgba(13, 71, 161, 0.2);
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Alertas */
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            border-left: 5px solid transparent;
+        }
+        
+        .alert-warning {
+            background-color: var(--alert-warning-bg);
+            border-color: #ffc107;
+        }
+        
+        .alert-danger {
+            background-color: var(--alert-danger-bg);
+            border-color: #dc3545;
+        }
+        
+        .alert-info {
+            background-color: var(--alert-info-bg);
+            border-color: #17a2b8;
+        }
+        
+        .alert-success {
+            background-color: var(--alert-success-bg);
+            border-color: #28a745;
+        }
+        
+        /* Seções de cores */
+        .section-blue {
+            background-color: rgba(13, 71, 161, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            color: #999;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WiFi Scanner e Brute Force Tool</h1>
+        <p>Documentação Completa - Versão 1.0</p>
+    </header>
+    
+    <div class="container">
+        <nav class="toc">
+            <h2>Índice</h2>
+            <ul>
+                <li><a href="#introducao">1. Introdução</a></li>
+                <li><a href="#instalacao">2. Instalação</a></li>
+                <li><a href="#uso-basico">3. Uso Básico</a></li>
+                <li><a href="#modos-operacao">4. Modos de Operação</a>
+                    <ul>
+                        <li><a href="#escaneamento-rede">4.1 Escaneamento de Rede</a></li>
+                        <li><a href="#brute-force">4.2 Brute Force</a></li>
+                    </ul>
+                </li>
+                <li><a href="#opcoes-avancadas">5. Opções Avançadas</a></li>
+                <li><a href="#exemplos-uso">6. Exemplos de Uso</a></li>
+                <li><a href="#interpretando-saida">7. Interpretando a Saída</a></li>
+                <li><a href="#solucao-problemas">8. Solução de Problemas</a></li>
+                <li><a href="#melhores-praticas">9. Melhores Práticas</a></li>
+            </ul>
+        </nav>
+        
+        <div class="alert alert-danger">
+            <strong>⚠️ Aviso Legal:</strong> Esta ferramenta foi desenvolvida <strong>APENAS PARA FINS EDUCACIONAIS E DE TESTE DE SEGURANÇA</strong> em redes e sistemas <strong>AUTORIZADOS</strong>. O uso desta ferramenta para acesso não autorizado a sistemas é ilegal e antiético. O autor não assume qualquer responsabilidade pelo uso indevido desta ferramenta.
+        </div>
+        
+        <section id="introducao">
+            <h2>1. Introdução</h2>
+            <p>O WiFi Scanner e Brute Force Tool é uma ferramenta de linha de comando desenvolvida em Python para auxiliar em testes de segurança de redes e sistemas. Ele combina funcionalidades de escaneamento de rede e tentativas de força bruta em serviços, permitindo avaliar a segurança de infraestruturas de rede.</p>
+            
+            <h3>Recursos Principais</h3>
+            <ul>
+                <li>Escaneamento de redes para identificar hosts ativos</li>
+                <li>Detecção de serviços e portas abertas</li>
+                <li>Suporte para escaneamento em faixas CIDR (ex: 192.168.1.0/24)</li>
+                <li>Tentativas de brute force em serviços comuns (SSH, FTP, HTTP/HTTPS, Telnet)</li>
+                <li>Personalização de wordlists para tentativas de brute force</li>
+                <li>Registro detalhado (logs) de todas as atividades</li>
+                <li>Interface de linha de comando completa e flexível</li>
+            </ul>
+            
+            <h3>Como Funciona</h3>
+            <p>A ferramenta opera em duas etapas principais:</p>
+            
+            <ol>
+                <li><strong>Escaneamento de Rede:</strong> Identifica hosts ativos e serviços em execução nas portas especificadas.</li>
+                <li><strong>Brute Force (opcional):</strong> Para cada serviço vulnerável encontrado, tenta acessá-lo usando combinações de usuário/senha de wordlists predefinidas.</li>
+            </ol>
+            
+            <p>Todas as operações são registradas em arquivos de log para análise posterior, e os resultados são exibidos de forma clara e organizada no terminal.</p>
+        </section>
