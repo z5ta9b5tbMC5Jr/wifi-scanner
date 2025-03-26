@@ -1,0 +1,13 @@
+2025-03-26 01:53:43 - INFO - Iniciando escaneamento de rede em: 192.168.1.0/24
+2025-03-26 01:53:44 - INFO - Usando Nmap para escaneamento
+2025-03-26 01:53:44 - INFO - Escaneando com Nmap: 192.168.1.0/24 (portas: 22,21,80,443,3389,23)
+2025-03-26 01:54:15 - INFO - Escaneamento concluído em 32.14 segundos
+2025-03-26 01:54:15 - INFO - Encontrados 3 hosts com serviços abertos
+2025-03-26 01:54:15 - INFO - Host: 192.168.1.1
+2025-03-26 01:54:15 - INFO -   Porta 80: http
+2025-03-26 01:54:15 - INFO -   Porta 443: https
+2025-03-26 01:54:15 - INFO - Host: 192.168.1.10
+2025-03-26 01:54:15 - INFO -   Porta 22: ssh
+2025-03-26 01:54:15 - INFO - Host: 192.168.1.15
+2025-03-26 01:54:15 - INFO -   Porta 21: ftp
+2025-03-26 01:54:15 - INFO - Escaneamento finalizado. Resultados salvos em: logs/scan_20250326_015343.log
