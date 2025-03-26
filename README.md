@@ -268,7 +268,9 @@ O modo verbose exibe mensagens de depuração que podem ajudar a identificar pro
 
 ## 📜 Documentação Completa
 
-Para uma documentação completa e detalhada sobre a ferramenta, consulte o arquivo `documentacao.html` incluído neste repositório.
+Para uma documentação completa e detalhada sobre a ferramenta, visite nossa [página de documentação online](https://github.com/z5ta9b5tbMC5Jr/wifi-scanner) ou abra o arquivo `documentacao.html` incluído neste repositório.
+
+**Nota:** A versão completa da documentação HTML pode necessitar de pequenos ajustes. A documentação neste README contém todas as informações essenciais para uso da ferramenta.
 
 ## 🤝 Contribuições
 
