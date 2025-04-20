@@ -282,6 +282,6 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ---
 
-WiFi Scanner e Brute Force Tool &copy; 2025 - Documentação v1.0
+WiFi Scanner e Brute Force Tool © 2025 - Documentação v1.0
 
 Esta ferramenta é fornecida apenas para fins educacionais e de teste de segurança. Use com responsabilidade.

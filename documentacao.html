@@ -3,287 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação do WiFi Scanner e Brute Force Tool</title>
-    <style>
-        /* Estilos Básicos */
-        :root {
-            --primary-color: #0d47a1;
-            --secondary-color: #64b5f6;
-            --text-color: #e0e0e0;
-            --bg-color: #121212;
-            --container-bg: #1a1a1a;
-            --border-color: #333;
-            --code-bg: #1e1e1e;
-            --alert-warning-bg: #2c2700;
-            --alert-danger-bg: #2c1212;
-            --alert-info-bg: #002c40;
-            --alert-success-bg: #002c14;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--container-bg);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        /* Navegação */
-        nav.toc {
-            background-color: rgba(13, 71, 161, 0.1);
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-        }
-        
-        nav.toc h2 {
-            margin-top: 0;
-            color: var(--secondary-color);
-        }
-        
-        nav.toc ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        nav.toc li {
-            margin-bottom: 8px;
-        }
-        
-        nav.toc a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            display: block;
-            padding: 5px 10px;
-            border-radius: 3px;
-            transition: background-color 0.2s;
-        }
-        
-        nav.toc a:hover {
-            background-color: rgba(100, 181, 246, 0.1);
-            text-decoration: underline;
-        }
-        
-        /* Tipografia */
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--secondary-color);
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-        }
-        
-        h2 {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-        
-        p {
-            margin-bottom: 1.2em;
-        }
-        
-        a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Código */
-        pre, code {
-            font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
-            background-color: var(--code-bg);
-            border-radius: 3px;
-        }
-        
-        code {
-            padding: 2px 5px;
-            color: #f06292;
-        }
-        
-        pre {
-            padding: 15px;
-            overflow-x: auto;
-            border: 1px solid var(--border-color);
-            line-height: 1.4;
-        }
-        
-        pre code {
-            padding: 0;
-            background-color: transparent;
-            color: #e0e0e0;
-        }
-        
-        /* Tabelas */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border: 1px solid var(--border-color);
-        }
-        
-        th {
-            background-color: rgba(13, 71, 161, 0.2);
-            font-weight: 600;
-        }
-        
-        tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        /* Alertas */
-        .alert {
-            padding: 15px;
-            border-radius: 4px;
-            margin: 20px 0;
-            border-left: 5px solid transparent;
-        }
-        
-        .alert-warning {
-            background-color: var(--alert-warning-bg);
-            border-color: #ffc107;
-        }
-        
-        .alert-danger {
-            background-color: var(--alert-danger-bg);
-            border-color: #dc3545;
-        }
-        
-        .alert-info {
-            background-color: var(--alert-info-bg);
-            border-color: #17a2b8;
-        }
-        
-        .alert-success {
-            background-color: var(--alert-success-bg);
-            border-color: #28a745;
-        }
-        
-        /* Seções de cores */
-        .section-blue {
-            background-color: rgba(13, 71, 161, 0.1);
-            border-radius: 5px;
-            padding: 20px;
-            margin: 30px 0;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-            border-top: 1px solid var(--border-color);
-            color: #999;
-        }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            header {
-                padding: 20px 15px;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            table {
-                display: block;
-                overflow-x: auto;
+    <title>Documentação do WiFi Scanner e Brute Force Tool - v2.0</title>
+    <!-- Adiciona o Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração opcional do Tailwind (pode ser usada para tema escuro padrão, etc.)
+        tailwind.config = {
+            darkMode: 'class', // ou 'media' se preferir baseado no OS
+            theme: {
+                extend: {
+                    colors: {
+                        // Pode adicionar cores customizadas se necessário
+                        'code-pink': '#f06292',
+                        'primary': { // Exemplo de cor primária customizada
+                            '50': '#e3f2fd',
+                            '100': '#bbdefb',
+                            '200': '#90caf9',
+                            '300': '#64b5f6',
+                            '400': '#42a5f5',
+                            '500': '#2196f3',
+                            '600': '#1e88e5',
+                            '700': '#1976d2',
+                            '800': '#1565c0',
+                            '900': '#0d47a1',
+                        },
+                         'gray': { // Ajustando a paleta de cinza padrão do Tailwind para ser mais escura
+                             '50': '#f9fafb',
+                             '100': '#f3f4f6',
+                             '200': '#e5e7eb',
+                             '300': '#d1d5db',
+                             '400': '#9ca3af',
+                             '500': '#6b7280',
+                             '600': '#4b5563',
+                             '700': '#374151', // Um pouco mais claro que o padrão 800
+                             '800': '#1f2937', // Um pouco mais claro que o padrão 900
+                             '900': '#111827', // Padrão 900
+                             '950': '#0a0f1a'  // Cinza ainda mais escuro
+                         }
+                    }
+                }
             }
         }
-    </style>
+        // Forçar modo escuro por padrão (se usar darkMode: 'class')
+        document.documentElement.classList.add('dark');
+    </script>
+    <!-- Remove o <style> antigo -->
 </head>
-<body>
-    <header>
-        <h1>WiFi Scanner e Brute Force Tool</h1>
-        <p>Documentação Completa - Versão 1.0</p>
+<body class="bg-gray-950 text-gray-300 font-sans leading-relaxed">
+    <header class="bg-gradient-to-r from-primary-700 to-primary-900 text-white p-8 text-center shadow-lg">
+        <h1 class="text-4xl font-bold mb-2">WiFi Scanner & Brute Force Tool</h1>
+        <p class="text-xl opacity-90">Documentação Completa - Versão 2.0 (Autor: Bypass)</p>
     </header>
     
-    <div class="container">
-        <nav class="toc">
-            <h2>Índice</h2>
-            <ul>
-                <li><a href="#introducao">1. Introdução</a></li>
-                <li><a href="#instalacao">2. Instalação</a></li>
-                <li><a href="#uso-basico">3. Uso Básico</a></li>
-                <li><a href="#modos-operacao">4. Modos de Operação</a>
-                    <ul>
-                        <li><a href="#escaneamento-rede">4.1 Escaneamento de Rede</a></li>
-                        <li><a href="#brute-force">4.2 Brute Force</a></li>
+    <div class="container max-w-6xl mx-auto p-6 bg-gray-900 shadow-xl rounded-lg mt-[-20px] relative z-10">
+        <!-- Índice (TOC) -->
+        <nav class="toc bg-gray-800 border border-gray-700 p-5 mb-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-primary-400 mt-0 mb-4 border-b border-gray-700 pb-2">Índice</h2>
+            <ul class="space-y-2">
+                <li><a href="#introducao" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">1. Introdução</a></li>
+                <li><a href="#instalacao" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">2. Instalação</a></li>
+                <li><a href="#uso-basico" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">3. Uso Básico</a></li>
+                <li>
+                    <a href="#opcoes-linha-comando" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">4. Opções de Linha de Comando</a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li><a href="#opcoes-alvo" class="block text-sm text-blue-500 hover:text-blue-300 pl-2">- 4.1 Alvo</a></li>
+                        <li><a href="#opcoes-scan" class="block text-sm text-blue-500 hover:text-blue-300 pl-2">- 4.2 Escaneamento</a></li>
+                        <li><a href="#opcoes-brute" class="block text-sm text-blue-500 hover:text-blue-300 pl-2">- 4.3 Brute Force</a></li>
+                        <li><a href="#opcoes-saida" class="block text-sm text-blue-500 hover:text-blue-300 pl-2">- 4.4 Saída e Logging</a></li>
                     </ul>
                 </li>
-                <li><a href="#opcoes-avancadas">5. Opções Avançadas</a></li>
-                <li><a href="#exemplos-uso">6. Exemplos de Uso</a></li>
-                <li><a href="#interpretando-saida">7. Interpretando a Saída</a></li>
-                <li><a href="#solucao-problemas">8. Solução de Problemas</a></li>
-                <li><a href="#melhores-praticas">9. Melhores Práticas</a></li>
+                <li><a href="#exemplos-uso" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">5. Exemplos de Uso</a></li>
+                <li><a href="#interpretando-saida" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">6. Interpretando a Saída</a></li>
+                <li><a href="#solucao-problemas" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">7. Solução de Problemas</a></li>
+                <li><a href="#melhores-praticas" class="block text-blue-400 hover:text-blue-300 hover:bg-gray-700 p-2 rounded transition duration-150 ease-in-out">8. Melhores Práticas e Desempenho</a></li>
             </ul>
         </nav>
         
-        <div class="alert alert-danger">
-            <strong>⚠️ Aviso Legal:</strong> Esta ferramenta foi desenvolvida <strong>APENAS PARA FINS EDUCACIONAIS E DE TESTE DE SEGURANÇA</strong> em redes e sistemas <strong>AUTORIZADOS</strong>. O uso desta ferramenta para acesso não autorizado a sistemas é ilegal e antiético. O autor não assume qualquer responsabilidade pelo uso indevido desta ferramenta.
+        <!-- Alerta de Aviso Legal -->
+        <div class="alert bg-red-900 border-l-4 border-red-500 text-red-100 p-4 mb-8 rounded-md shadow-md" role="alert">
+            <strong class="font-bold">⚠️ Aviso Legal e Ético:</strong> Esta ferramenta foi desenvolvida <strong>APENAS PARA FINS EDUCACIONAIS E DE TESTE DE SEGURANÇA</strong> em redes e sistemas <strong>AUTORIZADOS</strong>. O uso não autorizado é ilegal e antiético. O autor não se responsabiliza por qualquer uso indevido. Utilize com responsabilidade.
         </div>
         
-        <section id="introducao">
-            <h2>1. Introdução</h2>
-            <p>O WiFi Scanner e Brute Force Tool é uma ferramenta de linha de comando desenvolvida em Python para auxiliar em testes de segurança de redes e sistemas. Ele combina funcionalidades de escaneamento de rede e tentativas de força bruta em serviços, permitindo avaliar a segurança de infraestruturas de rede.</p>
+        <!-- Seções de Conteúdo -->
+        <section id="introducao" class="mb-12 space-y-4">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">1. Introdução</h2>
+            <p>O WiFi Scanner e Brute Force Tool é uma ferramenta de linha de comando desenvolvida em Python para auxiliar em testes de segurança de redes e sistemas. Ele combina funcionalidades de escaneamento de rede (com suporte a Nmap) e tentativas de força bruta em serviços comuns, permitindo avaliar a segurança de infraestruturas de rede de forma eficiente.</p>
             
-            <h3>Recursos Principais</h3>
-            <ul>
-                <li>Escaneamento de redes para identificar hosts ativos</li>
-                <li>Detecção de serviços e portas abertas</li>
-                <li>Suporte para escaneamento em faixas CIDR (ex: 192.168.1.0/24)</li>
-                <li>Tentativas de brute force em serviços comuns (SSH, FTP, HTTP/HTTPS, Telnet)</li>
-                <li>Personalização de wordlists para tentativas de brute force</li>
-                <li>Registro detalhado (logs) de todas as atividades</li>
-                <li>Interface de linha de comando completa e flexível</li>
+            <h3 class="text-2xl font-semibold text-primary-500">Recursos Principais (v2.0)</h3>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li>Escaneamento de redes para identificar hosts ativos (IPs, CIDRs, múltiplos alvos, arquivo de alvos).</li>
+                <li>Detecção de serviços e portas abertas com opção de usar <strong class="text-yellow-400">Nmap</strong> (recomendado, com <code class="text-code-pink bg-gray-800 px-1 rounded">-sV</code> por padrão) ou fallback para escaneamento por <strong class="text-yellow-400">sockets</strong> Python.</li>
+                <li>Paralelização configurável (<code class="text-code-pink bg-gray-800 px-1 rounded">--scan-workers</code>, <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-workers</code>) para acelerar operações.</li>
+                <li>Tentativas de brute force em serviços comuns (SSH, FTP, Telnet, HTTP Basic Auth) com wordlists personalizáveis.</li>
+                <li>Controle fino de timeouts para scan (<code class="text-code-pink bg-gray-800 px-1 rounded">--scan-timeout</code>) e brute force (<code class="text-code-pink bg-gray-800 px-1 rounded">--brute-timeout</code>).</li>
+                <li>Saída detalhada no console com cores e barras de progresso (<code class="text-code-pink bg-gray-800 px-1 rounded">tqdm</code>).</li>
+                <li>Registro de logs em arquivo com rotação automática.</li>
+                <li>Opção de salvar resultados em formatos estruturados: <strong class="text-yellow-400">JSON</strong> ou <strong class="text-yellow-400">CSV</strong> (<code class="text-code-pink bg-gray-800 px-1 rounded">--output-format</code>).</li>
+                <li>Modo verbose (<code class="text-code-pink bg-gray-800 px-1 rounded">-v</code>) para depuração.</li>
             </ul>
             
-            <h3>Como Funciona</h3>
-            <p>A ferramenta opera em duas etapas principais:</p>
-            
-            <ol>
-                <li><strong>Escaneamento de Rede:</strong> Identifica hosts ativos e serviços em execução nas portas especificadas.</li>
-                <li><strong>Brute Force (opcional):</strong> Para cada serviço vulnerável encontrado, tenta acessá-lo usando combinações de usuário/senha de wordlists predefinidas.</li>
+            <h3 class="text-2xl font-semibold text-primary-500">Como Funciona</h3>
+            <p>A ferramenta opera em etapas:</p>
+            <ol class="list-decimal list-inside space-y-1 pl-4">
+                <li><strong>Parseamento de Argumentos:</strong> Interpreta as opções fornecidas na linha de comando.</li>
+                <li><strong>Validação de Alvos:</strong> Processa e valida os alvos (IPs, CIDRs, arquivo).</li>
+                <li><strong>Escaneamento de Rede:</strong> Tenta usar Nmap (se disponível e não desabilitado com <code class="text-code-pink bg-gray-800 px-1 rounded">--no-nmap</code>) com os argumentos especificados (<code class="text-code-pink bg-gray-800 px-1 rounded">--nmap-args</code>). Se Nmap falhar ou não estiver disponível, usa sockets Python. Identifica hosts ativos e portas/serviços abertos.</li>
+                <li><strong>Brute Force (opcional):</strong> Se <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-force</code> for usado e houver resultados do scan, tenta acessar os serviços suportados usando as wordlists fornecidas.</li>
+                <li><strong>Geração de Saída:</strong> Salva os logs e os resultados no formato escolhido (log, JSON, CSV).</li>
             </ol>
-            
-            <p>Todas as operações são registradas em arquivos de log para análise posterior, e os resultados são exibidos de forma clara e organizada no terminal.</p>
         </section>
+
+        <section id="instalacao" class="mb-12 space-y-4">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">2. Instalação</h2>
+            <p>Siga estes passos para instalar e configurar a ferramenta:</p>
+            <ol class="list-decimal list-inside space-y-3 pl-4">
+                <li><strong>Clone o repositório:</strong>
+                    <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">git clone &lt;URL_DO_SEU_REPOSITÓRIO&gt;
+cd wifi-scanner</code></pre>
+                </li>
+                <li><strong>Instale o Nmap (Altamente Recomendado):</strong>
+                    <p class="mt-1">O Nmap fornece detecção de serviços muito mais precisa. Instale-o no seu sistema:</p>
+                    <ul class="list-disc list-inside space-y-1 pl-6 mt-1">
+                        <li><strong>Linux (Debian/Ubuntu):</strong> <code class="text-code-pink bg-gray-800 px-1 rounded">sudo apt update && sudo apt install nmap</code></li>
+                        <li><strong>Linux (Fedora/CentOS/RHEL):</strong> <code class="text-code-pink bg-gray-800 px-1 rounded">sudo dnf install nmap</code> ou <code class="text-code-pink bg-gray-800 px-1 rounded">sudo yum install nmap</code></li>
+                        <li><strong>macOS (usando Homebrew):</strong> <code class="text-code-pink bg-gray-800 px-1 rounded">brew install nmap</code></li>
+                        <li><strong>Windows:</strong> Baixe o instalador Npcap + Nmap do <a href="https://nmap.org/download.html" target="_blank" class="text-blue-400 hover:underline">site oficial do Nmap</a> e siga as instruções. Adicione ao PATH.</li>
+                    </ul>
+                </li>
+                <li><strong>Crie um Ambiente Virtual (Recomendado):</strong>
+                     <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python -m venv venv
+# Linux/macOS: source venv/bin/activate
+# Windows (cmd): venv\Scripts\activate.bat
+# Windows (PowerShell): .\venv\Scripts\Activate.ps1</code></pre>
+                </li>
+                <li><strong>Instale as dependências Python:</strong>
+                    <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">pip install -r requirements.txt</code></pre>
+                    <p class="mt-1 text-sm text-gray-400">Isso instalará <code>python-nmap</code>, <code>paramiko</code>, <code>requests</code>, <code>colorama</code>, <code>tqdm</code>, e <code>ipaddress</code>.</p>
+                </li>
+                 <li><strong>Verifique a Instalação:</strong>
+                    <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python wifi_scanner.py --help</code></pre>
+                    <p class="mt-1 text-sm text-gray-400">Se a instalação foi bem-sucedida, você verá a lista completa de opções.</p>
+                </li>
+            </ol>
+            <div class="alert bg-blue-900 border-l-4 border-blue-500 text-blue-100 p-4 rounded-md shadow-md" role="alert">
+                <strong class="font-bold">Nota sobre Privilégios:</strong> Algumas operações de escaneamento (ex: Nmap SYN scan) podem exigir privilégios de administrador (<code class="text-code-pink bg-gray-800 px-1 rounded">sudo</code> ou "Executar como Administrador"). O scan básico TCP connect geralmente não.
+            </div>
+        </section>
+
+        <section id="uso-basico" class="mb-12 space-y-4">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">3. Uso Básico</h2>
+            <p>A sintaxe fundamental para executar a ferramenta é:</p>
+            <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python wifi_scanner.py [OPÇÕES DE ALVO] [OUTRAS OPÇÕES]</code></pre>
+            <p>É obrigatório fornecer um alvo (com <code class="text-code-pink bg-gray-800 px-1 rounded">-t</code> ou <code class="text-code-pink bg-gray-800 px-1 rounded">--target-file</code>).</p>
+            <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300"># Escanear um único IP (portas padrão)
+python wifi_scanner.py -t 192.168.1.1
+
+# Escanear uma rede CIDR (portas padrão)
+python wifi_scanner.py -t 192.168.1.0/24
+
+# Obter ajuda detalhada
+python wifi_scanner.py -h</code></pre>
+        </section>
+
+        <section id="opcoes-linha-comando" class="mb-12 space-y-6">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">4. Opções de Linha de Comando</h2>
+            <p>Controle o comportamento da ferramenta com as seguintes opções:</p>
+
+            <h3 id="opcoes-alvo" class="text-2xl font-semibold text-primary-500">4.1 Opções de Alvo (Obrigatório escolher uma)</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
+                    <thead class="bg-gray-700">
+                        <tr>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider w-1/3">Opção</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider w-2/3">Descrição e Exemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top"><code class="text-code-pink">-t TARGET</code><br><code class="text-code-pink">--target TARGET</code></td>
+                            <td class="p-3">Especifica o(s) alvo(s) diretamente (IP, CIDR, múltiplos separados por vírgula).<br><em>Ex:</em> <code class="text-sm text-gray-400">-t 192.168.1.1,10.0.0.0/24</code></td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top"><code class="text-code-pink">--target-file FILE</code></td>
+                            <td class="p-3">Lê alvos de um arquivo (um por linha, ignora linhas com '#').<br><em>Ex:</em> <code class="text-sm text-gray-400">--target-file lista_ips.txt</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="opcoes-scan" class="text-2xl font-semibold text-primary-500 mt-6">4.2 Opções de Escaneamento</h3>
+             <div class="overflow-x-auto">
+                <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
+                    <thead class="bg-gray-700">
+                        <tr>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Opção</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Descrição</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Padrão</th>
+                        </tr>
+                    </thead>
+                     <tbody class="divide-y divide-gray-700">
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">-p PORTS</code><br><code class="text-code-pink">--ports PORTS</code></td>
+                            <td class="p-3">Portas a escanear (separadas por vírgula).</td>
+                            <td class="p-3"><code class="text-sm text-gray-400">22,80,443,21,23,3389</code></td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--scan-timeout SEC</code></td>
+                            <td class="p-3">Timeout (segundos) para conexão de socket.</td>
+                             <td class="p-3"><code class="text-sm text-gray-400">1.0</code></td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--scan-workers NUM</code></td>
+                            <td class="p-3">Threads paralelas para o scan.</td>
+                            <td class="p-3"><code class="text-sm text-gray-400">50</code></td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--nmap-args 'ARGS'</code></td>
+                            <td class="p-3">Argumentos para Nmap (use aspas se houver espaços).</td>
+                             <td class="p-3"><code class="text-sm text-gray-400">"-sV -T4"</code></td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--no-nmap</code></td>
+                            <td class="p-3">Força o uso de scan por socket.</td>
+                             <td class="p-3">Desativado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert bg-blue-900 border-l-4 border-blue-500 text-blue-100 p-4 rounded-md shadow-md mt-4" role="alert">
+                <strong class="font-bold">Nmap vs Socket:</strong> Nmap (<code class="text-code-pink bg-gray-800 px-1 rounded">-sV</code>) é melhor para identificar serviços. Socket apenas verifica se a porta TCP está aberta.
+            </div>
+
+            <h3 id="opcoes-brute" class="text-2xl font-semibold text-primary-500 mt-6">4.3 Opções de Brute Force</h3>
+             <div class="overflow-x-auto">
+                <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
+                    <thead class="bg-gray-700">
+                        <tr>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Opção</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Descrição</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Padrão</th>
+                        </tr>
+                    </thead>
+                     <tbody class="divide-y divide-gray-700">
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--brute-force</code></td>
+                            <td class="p-3">Ativa o módulo de brute force pós-scan.</td>
+                             <td class="p-3">Desativado</td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">-U FILE</code><br><code class="text-code-pink">--userlist FILE</code></td>
+                            <td class="p-3">Arquivo com lista de usuários.</td>
+                            <td class="p-3"><code class="text-sm text-gray-400">wordlists/users.txt</code></td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">-P FILE</code><br><code class="text-code-pink">--passlist FILE</code></td>
+                            <td class="p-3">Arquivo com lista de senhas.</td>
+                            <td class="p-3"><code class="text-sm text-gray-400">wordlists/passwords.txt</code></td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--brute-timeout SEC</code></td>
+                            <td class="p-3">Timeout (segundos) para cada tentativa de login.</td>
+                             <td class="p-3"><code class="text-sm text-gray-400">3.0</code></td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--brute-workers NUM</code></td>
+                            <td class="p-3">Threads paralelas para o brute force.</td>
+                             <td class="p-3"><code class="text-sm text-gray-400">10</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="opcoes-saida" class="text-2xl font-semibold text-primary-500 mt-6">4.4 Opções de Saída e Logging</h3>
+             <div class="overflow-x-auto">
+                 <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
+                    <thead class="bg-gray-700">
+                        <tr>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Opção</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Descrição</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Padrão</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">-o NAME</code><br><code class="text-code-pink">--output NAME</code></td>
+                            <td class="p-3">Nome base para arquivos de saída (sem extensão).</td>
+                            <td class="p-3"><code class="text-sm text-gray-400">logs/scan_results_...</code></td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">--output-format FMT</code></td>
+                            <td class="p-3">Formato dos resultados (<code class="text-code-pink">log</code>, <code class="text-code-pink">json</code>, <code class="text-code-pink">csv</code>). Log detalhado sempre em .log.</td>
+                            <td class="p-3"><code class="text-sm text-gray-400">log</code></td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3"><code class="text-code-pink">-v</code><br><code class="text-code-pink">--verbose</code></td>
+                            <td class="p-3">Ativa modo verbose (nível DEBUG no log).</td>
+                             <td class="p-3">Desativado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="exemplos-uso" class="mb-12 space-y-6">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">5. Exemplos de Uso</h2>
+
+            <div>
+                <h4 class="text-xl font-medium text-primary-500 mb-1">Exemplo 1: Scan JSON na rede local</h4>
+                <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python wifi_scanner.py -t 192.168.1.0/24 -p 21,22,80,443 -o scan_rede_local --output-format json -v</code></pre>
+                <p class="text-sm text-gray-400 mt-1"><em>Escaneia a rede 192.168.1.0/24 (portas 21, 22, 80, 443), salva em JSON (<code>scan_rede_local.json</code>), log detalhado separado, modo verbose.</em></p>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-medium text-primary-500 mb-1">Exemplo 2: Scan e Brute Force (alvos de arquivo, Nmap agressivo)</h4>
+                 <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python wifi_scanner.py --target-file servidores.txt --nmap-args="-sV -T5 -A" --brute-force -U users.txt -P pass.txt -o relatorio_ataque --output-format csv --brute-workers 25</code></pre>
+                <p class="text-sm text-gray-400 mt-1"><em>Lê alvos de <code>servidores.txt</code>, usa Nmap agressivo (<code>-A -T5</code>), faz brute force com listas customizadas (25 threads), salva em CSV (<code>relatorio_ataque.csv</code>).</em></p>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-medium text-primary-500 mb-1">Exemplo 3: Forçar Socket Scan com Timeouts Maiores</h4>
+                 <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python wifi_scanner.py -t 10.1.1.5,10.1.1.6 --no-nmap --scan-timeout 2.5 --brute-force --brute-timeout 5.0 -o scan_lento</code></pre>
+                 <p class="text-sm text-gray-400 mt-1"><em>Escaneia 10.1.1.5 e 10.1.1.6 com sockets (timeout 2.5s), faz brute force (timeout 5.0s), salva em log (<code>scan_lento.log</code>).</em></p>
+            </div>
+
+            <div>
+                 <h4 class="text-xl font-medium text-primary-500 mb-1">Exemplo 4: Scan Nmap Top 20 Portas (sem brute force), Saída CSV</h4>
+                 <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">python wifi_scanner.py -t 192.168.0.0/24 --nmap-args="--top-ports 20" -o scan_top_ports --output-format csv</code></pre>
+                 <p class="text-sm text-gray-400 mt-1"><em>Usa Nmap (top 20 portas) na rede, sem brute force, salva em CSV (<code>scan_top_ports.csv</code>).</em></p>
+            </div>
+        </section>
+
+        <section id="interpretando-saida" class="mb-12 space-y-4">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">6. Interpretando a Saída</h2>
+            <p>Resultados são apresentados no console e em arquivos.</p>
+
+            <h3 class="text-2xl font-semibold text-primary-500">Console</h3>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li>Banner inicial e avisos éticos.</li>
+                <li>Logs de início/fim de fases (scan, brute force).</li>
+                <li>Barras de progresso (tqdm).</li>
+                <li>Resumo colorido de hosts/portas do scan.</li>
+                <li>Logs coloridos de credenciais encontradas (brute force).</li>
+                <li>Mensagens de status, warnings, erros.</li>
+                <li>Sumário final (tempo total, localização dos arquivos).</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold text-primary-500 mt-4">Arquivo de Log (<code class="text-code-pink bg-gray-800 px-1 rounded">.log</code>)</h3>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li>Contém todas as mensagens do console (incluindo DEBUG se <code class="text-code-pink bg-gray-800 px-1 rounded">-v</code>).</li>
+                <li>Formato: <code class="text-sm text-gray-400">YYYY-MM-DD HH:MM:SS - LEVEL - MESSAGE</code>.</li>
+                <li>Essencial para depuração e auditoria.</li>
+                <li>Possui rotação automática (evita arquivos gigantes).</li>
+                <li>Se <code class="text-code-pink bg-gray-800 px-1 rounded">--output-format log</code>, inclui resumo formatado no final.</li>
+            </ul>
+
+             <h3 class="text-2xl font-semibold text-primary-500 mt-4">Arquivo JSON (<code class="text-code-pink bg-gray-800 px-1 rounded">.json</code>)</h3>
+            <p>Estrutura do arquivo <code class="text-sm text-gray-400">&lt;output_base&gt;.json</code>:</p>
+             <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">{
+  "scan_results": {
+    "HOST_IP_1": {
+      "PORT_1": { /* Detalhes do Nmap/Socket */ },
+      "PORT_2": { ... }
+    },
+    "HOST_IP_2": { ... }
+  },
+  "found_credentials": {
+    "HOST_IP_1": {
+      "SERVICE_NAME_1": [ ["user1", "pass1"], ["user2", "pass2"] ],
+      "SERVICE_NAME_2": [ ... ]
+    },
+    "HOST_IP_2": { ... }
+  }
+}</code></pre>
+
+             <h3 class="text-2xl font-semibold text-primary-500 mt-4">Arquivo CSV (<code class="text-code-pink bg-gray-800 px-1 rounded">.csv</code>)</h3>
+            <p>Estrutura do arquivo <code class="text-sm text-gray-400">&lt;output_base&gt;.csv</code>:</p>
+            <pre class="bg-gray-800 p-3 rounded-md border border-gray-700 overflow-x-auto"><code class="text-gray-300">Tipo,Host,Porta,Servico,Produto,Versao
+Scan,192.168.1.1,80,http,Apache httpd,2.4.41
+Scan,...
+
+Tipo,Host,ServicoPorta,Usuario,Senha
+BruteForce,192.168.1.10,ssh,root,password
+BruteForce,...</code></pre>
+        </section>
+
+        <section id="solucao-problemas" class="mb-12 space-y-4">
+             <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">7. Solução de Problemas</h2>
+             <div class="overflow-x-auto">
+                 <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
+                     <thead class="bg-gray-700">
+                        <tr>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Problema</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Possível Causa</th>
+                            <th class="p-3 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider">Solução</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700 text-sm">
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top">Erro "Nmap: command not found"</td>
+                            <td class="p-3 align-top">Nmap não instalado ou não no PATH.</td>
+                            <td class="p-3 align-top">Instale Nmap (Seção 2) e verifique o PATH. Ou use <code class="text-code-pink bg-gray-800 px-1 rounded">--no-nmap</code>.</td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top">Erro "ImportError: No module named ..."</td>
+                            <td class="p-3 align-top">Dependências Python não instaladas ou ambiente virtual inativo.</td>
+                            <td class="p-3 align-top">Ative o venv (se usar). Execute <code class="text-code-pink bg-gray-800 px-1 rounded">pip install -r requirements.txt</code>.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top">Scan lento ou timeouts</td>
+                             <td class="p-3 align-top">Timeout baixo; muitos workers; alvo inválido; firewall.</td>
+                            <td class="p-3 align-top">Aumente timeouts (<code class="text-code-pink bg-gray-800 px-1 rounded">--scan-timeout</code>, <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-timeout</code>). Reduza workers (<code class="text-code-pink bg-gray-800 px-1 rounded">--scan-workers</code>, <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-workers</code>). Verifique firewall e alvos.</td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top">Erro "Permissão negada" / Socket Error</td>
+                            <td class="p-3 align-top">Falta de privilégios (Nmap raw scan, portas <1024).</td>
+                            <td class="p-3 align-top">Execute com <code class="text-code-pink bg-gray-800 px-1 rounded">sudo</code> / Administrador.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top">Brute force falha em credenciais óbvias</td>
+                            <td class="p-3 align-top">Serviço não suportado; Wordlist errada; Timeout baixo; Bloqueio no servidor.</td>
+                            <td class="p-3 align-top">Confira serviço e wordlists. Aumente <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-timeout</code>. Verifique logs do servidor alvo.</td>
+                        </tr>
+                         <tr class="hover:bg-gray-750 transition duration-150">
+                            <td class="p-3 align-top">Arquivos de saída não criados</td>
+                             <td class="p-3 align-top">Permissão de escrita negada no diretório <code class="text-code-pink bg-gray-800 px-1 rounded">logs/</code>; caminho inválido em <code class="text-code-pink bg-gray-800 px-1 rounded">-o</code>.</td>
+                            <td class="p-3 align-top">Verifique permissões do diretório <code class="text-code-pink bg-gray-800 px-1 rounded">logs/</code>. Use caminho válido em <code class="text-code-pink bg-gray-800 px-1 rounded">-o</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-4">Para depuração, use a flag <code class="text-code-pink bg-gray-800 px-1 rounded">-v</code> (verbose) e analise o arquivo <code class="text-code-pink bg-gray-800 px-1 rounded">.log</code>.</p>
+        </section>
+
+        <section id="melhores-praticas" class="mb-12 space-y-4">
+            <h2 class="text-3xl font-semibold text-primary-400 border-b border-gray-700 pb-2">8. Melhores Práticas e Desempenho</h2>
+            
+            <h3 class="text-2xl font-semibold text-primary-500">Segurança e Ética</h3>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li><strong class="text-red-400">Autorização SEMPRE:</strong> Obtenha permissão explícita e por escrito antes de qualquer scan.</li>
+                <li><strong>Ambiente Controlado:</strong> Use primariamente em laboratórios ou redes próprias.</li>
+                <li><strong>Minimizar Impacto:</strong> Evite scans/brute force agressivos em produção.</li>
+                <li><strong>Confidencialidade:</strong> Proteja os resultados e logs.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold text-primary-500 mt-4">Desempenho</h3>
+            <ul class="list-disc list-inside space-y-1 pl-4">
+                <li><strong>Use Nmap:</strong> Preferível para detecção de serviço (<code class="text-code-pink bg-gray-800 px-1 rounded">-sV</code>). Ajuste timing (<code class="text-code-pink bg-gray-800 px-1 rounded">-T3</code>, <code class="text-code-pink bg-gray-800 px-1 rounded">-T4</code>).</li>
+                <li><strong>Workers:</strong> Ajuste <code class="text-code-pink bg-gray-800 px-1 rounded">--scan-workers</code> e <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-workers</code> baseado nos recursos do sistema/rede.</li>
+                 <li><strong>Timeouts:</strong> Aumente <code class="text-code-pink bg-gray-800 px-1 rounded">--scan-timeout</code> e <code class="text-code-pink bg-gray-800 px-1 rounded">--brute-timeout</code> em redes lentas.</li>
+                <li><strong>Especificidade:</strong> Defina portas específicas (<code class="text-code-pink bg-gray-800 px-1 rounded">-p</code>).</li>
+                <li><strong>Wordlists Eficazes:</strong> Use listas direcionadas.</li>
+            </ul>
+        </section>
+
+    </div>
+    
+    <footer class="text-center p-8 mt-12 border-t border-gray-700 text-gray-500 text-sm">
+        WiFi Scanner e Brute Force Tool &copy; 2024-2025 - Autor: Bypass - Documentação v2.0<br>
+        Lembre-se: Use esta ferramenta de forma ética e legal.
+    </footer>
+</body>
+</html>

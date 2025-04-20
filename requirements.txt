@@ -1,6 +1,7 @@
-python-nmap==0.7.1
-paramiko==3.2.0
-requests==2.31.0
-colorama==0.4.6
-tqdm==4.65.0
-ipaddress==1.0.23
+python-nmap>=0.7.1
+paramiko>=3.2.0
+requests>=2.31.0
+colorama>=0.4.6
+tqdm>=4.65.0
+ipaddress>=1.0.23 # Necessário para Python < 3.3, mas útil ter explícito
+# Adicionar outras dependências se novos módulos de brute force forem criados (ex: pysmbclient)
