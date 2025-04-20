@@ -34,7 +34,7 @@ Ferramenta de linha de comando para escaneamento de redes e testes de força bru
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITÓRIO>
+    git clone <https://github.com/z5ta9b5tbMC5Jr/wifi-scanner.git>
     cd wifi-scanner
     ```
 2.  **Instale as dependências:**
